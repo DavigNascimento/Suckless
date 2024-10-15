@@ -69,11 +69,12 @@ static const char *mutemic[] = { "pactl", "set-source-mute", "@DEFAULT_SOURCE@",
 static const char *brightnessup[] = { "brightnessctl", "set", "+5%", NULL };
 static const char *brightnessdown[] = { "brightnessctl", "set", "5%-", NULL };
 
-/* Applications.scripts */
+/* Applications */
 
 static const char *lock[] = { "xlock", "-mode", "worm", NULL};
 static const char *calc[] = { "galculator", NULL};
 static const char *okular[] = { "okular", NULL};
+static const char *xcolor[] = { "xcolor", "-s", NULL};
 
 static const char *playerctlP[] = { "playerctl", "play-pause", NULL};
 static const char *playerctls[] = { "playerctl", "stop", NULL};
@@ -162,6 +163,7 @@ static Key keys[] = {
 	{0,				XF86XK_AudioPrev,	spawn,		{.v = playerctlp}},
 	{0,				XF86XK_AudioNext,	spawn,		{.v = playerctln}},
 	{MODKEY,			XK_l,			spawn,		{.v = lock}},
+	{MODKEY,			XK_c,			spawn,		{.v = xcolor}},
 };
 
 /* button definitions */

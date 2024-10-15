@@ -1,0 +1,19 @@
+# dwm
+dwm/dwm
+*.o
+dwm/components/*.o
+
+# st
+st/st
+*.o
+st/components/*.o
+
+# slstatus
+slstatus/slstatus
+*.o
+slstatus/components/*.o
+
+# dmenu
+dmenu/dmenu
+*.o
+dmenu/components/*.o

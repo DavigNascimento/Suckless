@@ -6,6 +6,7 @@ dwm/config.h
 
 # st
 st/st
+st/config.h
 
 # slstatus
 slstatus/slstatus

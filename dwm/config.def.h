@@ -75,6 +75,10 @@ static const char *lock[] = { "xlock", "-mode", "worm", NULL};
 static const char *calc[] = { "galculator", NULL};
 static const char *okular[] = { "okular", NULL};
 static const char *xcolor[] = { "xcolor", "-s", NULL};
+static const char *mousepad[] = { "mousepad", NULL};
+static const char *vscode[] = { "code", NULL};
+
+/* Player Controls */
 
 static const char *playerctlP[] = { "playerctl", "play-pause", NULL};
 static const char *playerctls[] = { "playerctl", "stop", NULL};
@@ -101,7 +105,7 @@ static const char *filebrws[] = { "pcmanfm", NULL };
 static Key keys[] = {
 	/* modifier                     key  			function        argument */
 	{ MODKEY,                       XK_space,  		spawn,          {.v = dmenucmd } },
-	{ MODKEY,                    		XK_Return, 		spawn,          {.v = termcmd } },
+	{ MODKEY,             		XK_Return, 		spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,     		togglebar,      {0} },
 	{ MODKEY,                       XK_j,      		focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      		focusstack,     {.i = -1 } },
@@ -109,9 +113,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      		incnmaster,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_h,     		setmfact,       {.f = -0.05} },
 	{ MODKEY|ShiftMask,             XK_l,      		setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_BackSpace, zoom,           {0} },
+	{ MODKEY,                       XK_BackSpace, 		zoom,		{0} },
 	{ MODKEY,                       XK_Tab,    		view,           {0} },
-	{ MODKEY|ShiftMask,    	      	XK_c,		   	  killclient,     {0} },
+	{ MODKEY|ShiftMask,    	      	XK_c,			killclient,     {0} },
 	{ MODKEY,                       XK_t,      		setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      		setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      		setlayout,      {.v = &layouts[2]} },
@@ -124,15 +128,15 @@ static Key keys[] = {
 	{ MODKEY,                       XK_comma,  		focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, 		focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  		tagmon,         {.i = -1 } },
-  { MODKEY|ShiftMask,             XK_period, 		tagmon,         {.i = +1 } },
-  { MODKEY,                       XK_minus,  		setgaps,        {.i = -1 } },
-	{ ControlMask|Mod1Mask,         XK_Right,     viewnext,       {0} },
-	{ ControlMask|Mod1Mask,         XK_Left,      viewprev,       {0} },
-	{ ControlMask|Mod1Mask,         XK_End,       tagtonext,      {0} },
-	{ ControlMask|Mod1Mask,         XK_Home,      tagtoprev,      {0} },
+	{ MODKEY|ShiftMask,             XK_period, 		tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_minus,  		setgaps,        {.i = -1 } },
+	{ ControlMask|Mod1Mask,         XK_Right,	    	viewnext,       {0} },
+	{ ControlMask|Mod1Mask,         XK_Left,	    	viewprev,       {0} },
+	{ ControlMask|Mod1Mask,         XK_End,		    	tagtonext,      {0} },
+	{ ControlMask|Mod1Mask,         XK_Home,	    	tagtoprev,      {0} },
 	{ MODKEY,                       XK_equal,  		setgaps,        {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_equal,  		setgaps,        {.i = 0  } },
-	TAGKEYS(                        XK_1,                   		  0)
+	TAGKEYS(                        XK_1,                   		0)
 	TAGKEYS(                        XK_2,                      		1)
 	TAGKEYS(                        XK_3,                      		2)
 	TAGKEYS(                        XK_4,                      		3)
@@ -164,6 +168,8 @@ static Key keys[] = {
 	{0,				XF86XK_AudioNext,	spawn,		{.v = playerctln}},
 	{MODKEY,			XK_l,			spawn,		{.v = lock}},
 	{MODKEY,			XK_c,			spawn,		{.v = xcolor}},
+	{MODKEY|ShiftMask,		XK_m,			spawn,		{.v = mousepad}},
+	{MODKEY,			XK_v,			spawn,		{.v = vscode}},
 };
 
 /* button definitions */

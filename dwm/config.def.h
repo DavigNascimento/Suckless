@@ -32,9 +32,11 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	/* { "Gimp",     NULL,       NULL,       0,            1,           -1 }, */
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class		instance	title		tags mask	isfloating	monitor */
+
+	/* { "Gimp",		NULL,		NULL,		0,		1,		-1 }, */
+	{ "Firefox",		NULL,		NULL,		1 << 8,		0,		-1 },
+	{ "Telegram",		NULL,		NULL,		8 >> 9,		0,		-1 },
 };
 
 /* layout(s) */
@@ -49,7 +51,7 @@ static const Layout layouts[] = {
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
  	{ "[@]",      spiral },
- 	{ "[\\]",      dwindle },
+ 	{ "[\\]",     dwindle },
 };
 
 /*screenshot*/

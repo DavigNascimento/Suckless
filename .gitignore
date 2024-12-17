@@ -8,6 +8,10 @@ dwm/config.h
 st/st
 st/config.h
 
+# st.mental
+st.mental/st
+st.mental/config.h
+
 # slstatus
 slstatus/slstatus
 

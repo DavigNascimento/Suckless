@@ -54,25 +54,28 @@ static const Layout layouts[] = {
  	{ "[\\]",     dwindle },
 };
 
-/*screenshot*/
+/* Screenshot */
 static const char *screenshot[] = {"scrot", "/home/davign/Pictures/%Y-%m-%d_%T-screenshot.png"};
 static const char *screenshotsel[] = {"scrot", "-s",  "/home/davign/Pictures/%Y-%m-%d_%T-screenshot.png"};
 
-/* volume keys*/
-static const char *upvol[] ={ "volumectl", "up", NULL };
-static const char *downvol[] ={ "volumectl", "down", NULL };
-static const char *mutevol[] ={ "volumectl", "toggle", NULL };
+/* Volume Keys */
+// static const char *upvol[] ={ "volumectl", "up", "5", NULL };
+// static const char *downvol[] ={ "volumectl", "down", "5", NULL };
+// static const char *mutevol[] ={ "volumectl", "toggle", NULL };
+
+static const char *upvol[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL};
+static const char *downvol[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL};
+static const char *mutevol[] = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL};
 
 static const char *downmic[] = { "pactl", "set-source-volume", "@DEFAULT_SOURCE@", "-5%", NULL};
 static const char *upmic[] = { "pactl", "set-source-volume", "@DEFAULT_SOURCE@", "+5%", NULL};
 static const char *mutemic[] = { "pactl", "set-source-mute", "@DEFAULT_SOURCE@", "toggle", NULL };
 
-/* backlight */
+/* Backlight */
 static const char *brightnessup[] = { "brightnessctl", "set", "+5%", NULL };
 static const char *brightnessdown[] = { "brightnessctl", "set", "5%-", NULL };
 
 /* Applications */
-
 static const char *lock[] = { "xlock", "-mode", "worm", NULL};
 static const char *calc[] = { "galculator", NULL};
 static const char *okular[] = { "okular", NULL};
@@ -81,7 +84,6 @@ static const char *mousepad[] = { "mousepad", NULL};
 static const char *vscode[] = { "code", NULL};
 
 /* Player Controls */
-
 static const char *playerctlP[] = { "playerctl", "play-pause", NULL};
 static const char *playerctls[] = { "playerctl", "stop", NULL};
 static const char *playerctln[] = { "playerctl", "next", NULL};

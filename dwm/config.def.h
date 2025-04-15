@@ -58,8 +58,8 @@ static const Layout layouts[] = {
 };
 
 /* Screenshot */
-static const char *screenshot[] = {"scrot", "/home/davign/Pictures/%Y-%m-%d_%T-screenshot.png"};
-static const char *screenshotsel[] = {"scrot", "-s",  "/home/davign/Pictures/%Y-%m-%d_%T-screenshot.png"};
+static const char *screenshot[] = {"scrot", "-Z", "0", "-q", "100", "/home/davign/Pictures/%Y-%m-%d_%T-screenshot.png"};
+static const char *screenshotsel[] = {"scrot", "-s", "-Z", "0", "-q", "100", "/home/davign/Pictures/%Y-%m-%d_%T-screenshot.png"};
 
 /* Volume Keys */
 static const char *upvol[] ={ "volumectl", "up", "5", NULL };
@@ -150,29 +150,41 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                                      		        8)
 	{ MODKEY|ShiftMask,             XK_q,    		                quit,                   {0}},
 	{ MODKEY,			            XK_e,			                spawn,		            {.v = filebrws}},
-	{0, 				            XK_Print, 		                spawn,	   	            {.v = screenshot}},
+	{ 0, 				            XK_Print, 		                spawn,	   	            {.v = screenshot}},
 	{ ShiftMask, 			        XK_Print, 		                spawn,	   	            {.v = screenshotsel}},
-	{0,				                XF86XK_Calculator,	            spawn,		            {.v = calc}},
-	{0,			                    XF86XK_AudioLowerVolume,        spawn,		            {.v = downvol}},
-	{0,			                    XF86XK_AudioMute, 	            spawn,		            {.v = mutevol}},
-	{0, 				            XF86XK_AudioRaiseVolume,        spawn, 		            {.v = upvol}},
+	{ 0,  			                XF86XK_Calculator,	            spawn,		            {.v = calc}},
+    // Volume Keys
+	{ 0,  		                    XF86XK_AudioLowerVolume,        spawn,		            {.v = downvol}},
+	{ MODKEY,  		                XK_bracketright,                spawn,		            {.v = downvol}},
+	{ 0,  		                    XF86XK_AudioMute, 	            spawn,		            {.v = mutevol}},
+	{ MODKEY,  		                XK_slash,        	            spawn,		            {.v = mutevol}},
+	{ 0, 				            XF86XK_AudioRaiseVolume,        spawn, 		            {.v = upvol}},
+	{ MODKEY, 				        XK_bracketleft,                 spawn, 		            {.v = upvol}},
 	{ CONTROL, 			            XF86XK_AudioRaiseVolume,        spawn, 		            {.v = upmic}},
+	{ MODKEY|ShiftMask, 			XK_bracketleft,                 spawn, 		            {.v = upmic}},
 	{ CONTROL,		                XF86XK_AudioLowerVolume,        spawn,		            {.v = downmic}},
+	{ MODKEY|ShiftMask,		        XK_bracketright,                spawn,		            {.v = downmic}},
 	{ CONTROL,	 		            XF86XK_AudioMute, 	            spawn,		            {.v = mutemic}},
-	{0,	 			                XF86XK_AudioMicMute, 	        spawn,		            {.v = mutemic}},	
-	{MODKEY, 			            XK_w,			                spawn, 		            {.v = brightnessup}},
-	{0, 				            XF86XK_MonBrightnessUp,         spawn, 		            {.v = brightnessup}},
-	{MODKEY, 			            XK_s,			                spawn,		            {.v = brightnessdown}},
-	{0, 				            XF86XK_MonBrightnessDown,       spawn,		            {.v = brightnessdown}},
-	{MODKEY,			            XK_o,			                spawn,		            {.v = okular}},
-	{0,				                XF86XK_AudioPlay,	            spawn,		            {.v = playerctlP}},
-	{0,				                XF86XK_AudioStop,	            spawn,		            {.v = playerctls}},
-	{0,				                XF86XK_AudioPrev,	            spawn,		            {.v = playerctlp}},
-	{0,				                XF86XK_AudioNext,	            spawn,		            {.v = playerctln}},
-	{MODKEY,			            XK_l,			                spawn,		            {.v = lock}},
-	{MODKEY,			            XK_c,			                spawn,		            {.v = xcolor}},
-	{MODKEY|ShiftMask,	            XK_m,			                spawn,		            {.v = mousepad}},
-	{MODKEY,			            XK_v,			                spawn,		            {.v = vscode}},
+	{ 0,   			                XF86XK_AudioMicMute, 	        spawn,		            {.v = mutemic}},
+    { MODKEY|ShiftMask,             XK_slash,                       spawn,                  {.v = mutemic}},
+    // PlayerCtl
+	{ 0,  			                XF86XK_AudioPlay,	            spawn,		            {.v = playerctlP}},
+	{ MODKEY,  			            XK_p,           	            spawn,		            {.v = playerctlP}},
+	{ 0,  			                XF86XK_AudioStop,	            spawn,		            {.v = playerctls}},
+	{ 0,  			                XF86XK_AudioPrev,	            spawn,		            {.v = playerctlp}},
+	{ MODKEY|ShiftMask,  			XK_n,           	            spawn,		            {.v = playerctlp}},
+	{ 0,			                XF86XK_AudioNext,	            spawn,		            {.v = playerctln}},
+	{ MODKEY,	        		    XK_n,	                        spawn,		            {.v = playerctln}},
+
+	{ MODKEY, 			            XK_w,			                spawn, 		            {.v = brightnessup}},
+	{ 0, 				            XF86XK_MonBrightnessUp,         spawn, 		            {.v = brightnessup}},
+	{ MODKEY, 			            XK_s,			                spawn,		            {.v = brightnessdown}},
+	{ 0, 				            XF86XK_MonBrightnessDown,       spawn,		            {.v = brightnessdown}},
+	{ MODKEY,			            XK_o,			                spawn,		            {.v = okular}},
+	{ MODKEY,			            XK_l,			                spawn,		            {.v = lock}},
+	{ MODKEY,			            XK_c,			                spawn,		            {.v = xcolor}},
+	{ MODKEY|ShiftMask,	            XK_m,			                spawn,		            {.v = mousepad}},
+	{ MODKEY,			            XK_v,			                spawn,		            {.v = vscode}},
 };
 
 /* button definitions */

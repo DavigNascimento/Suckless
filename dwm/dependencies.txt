@@ -1,0 +1,10 @@
+volumectl
+brightnessctl
+xlock
+galculator
+okular
+xcolor
+scrot
+playerctl
+code
+pcmanfm

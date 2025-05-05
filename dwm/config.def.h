@@ -39,6 +39,8 @@ static const Rule rules[] = {
 	{ "Telegram",		NULL,		NULL,		1 << 7,		0,		    -1 },
 	{ "thunderbird",	NULL,		NULL,		1 << 8,		0,		    -1 },
 	{ "discord",	    NULL,		NULL,		1 << 2,		0,		    -1 },
+	{ "galculator",	    NULL,		NULL,		0,  		1,		    -1 },
+	{ "vivaldi-stable", NULL,		NULL,		1 << 1,		0,		    -1 },
 
 };
 

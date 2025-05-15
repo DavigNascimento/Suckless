@@ -40,7 +40,7 @@ static const Rule rules[] = {
 	{ "thunderbird",	NULL,		NULL,		1 << 8,		0,		    -1 },
 	{ "discord",	    NULL,		NULL,		1 << 2,		0,		    -1 },
 	{ "galculator",	    NULL,		NULL,		0,  		1,		    -1 },
-	{ "vivaldi-stable", NULL,		NULL,		1 << 1,		0,		    -1 },
+	{ "vivaldi-stable", NULL,		NULL,		1 << 0,		0,		    -1 },
 
 };
 
@@ -60,8 +60,13 @@ static const Layout layouts[] = {
 };
 
 /* Screenshot */
-static const char *screenshot[] = {"scrot", "-Z", "0", "-q", "100", "/home/davign/Pictures/%Y-%m-%d_%T-screenshot.png"};
-static const char *screenshotsel[] = {"scrot", "-s", "-Z", "0", "-q", "100", "/home/davign/Pictures/%Y-%m-%d_%T-screenshot.png"};
+static const char *screenshot[] = {"scrot", "-q", "100", "/home/davign/Pictures/%Y-%m-%d_%T-screenshot.png"};
+static const char *screenshotsel[] = {"scrot", "-s", "-q", "100", "/home/davign/Pictures/%Y-%m-%d_%T-screenshot.png"};
+static const char *screenshotselClipCopy[] = {
+    "/bin/sh", "-c",
+    "scrot -s -q 100 - | xclip -selection clipboard -target image/png",
+    NULL
+};
 
 /* Volume Keys */
 static const char *upvol[] ={ "volumectl", "up", "5", NULL };
@@ -154,6 +159,8 @@ static Key keys[] = {
 	{ MODKEY,			            XK_e,			                spawn,		            {.v = filebrws}},
 	{ 0, 				            XK_Print, 		                spawn,	   	            {.v = screenshot}},
 	{ ShiftMask, 			        XK_Print, 		                spawn,	   	            {.v = screenshotsel}},
+    { ControlMask|ShiftMask,        XK_Print,                       spawn,                  {.v = screenshotselClipCopy}},
+
 	{ 0,  			                XF86XK_Calculator,	            spawn,		            {.v = calc}},
     // Volume Keys
 	{ 0,  		                    XF86XK_AudioLowerVolume,        spawn,		            {.v = downvol}},

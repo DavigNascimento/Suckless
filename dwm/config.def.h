@@ -39,8 +39,9 @@ static const Rule rules[] = {
 	{ "Telegram",		NULL,		NULL,		1 << 7,		0,		    -1 },
 	{ "thunderbird",	NULL,		NULL,		1 << 8,		0,		    -1 },
 	{ "discord",	    NULL,		NULL,		1 << 2,		0,		    -1 },
-	{ "galculator",	    NULL,		NULL,		0,  		1,		    -1 },
-	{ "vivaldi-stable", NULL,		NULL,		1 << 0,		0,		    -1 },
+	{ "Galculator",	    NULL,		NULL,		0,  		1,		    -1 },
+	{ "Vivaldi-stable", NULL,		NULL,		1 << 0,		0,		    -1 },
+	{ "steam",          NULL,		NULL,		1 << 1,		0,		    -1 },
 
 };
 
@@ -111,6 +112,8 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *filebrws[] = { "pcmanfm", NULL };
+static const char *processManager[] = { "st", "-e", "btm", NULL };
+static const char *suspend[] = { "systemctl", "suspend", NULL };
 
 static Key keys[] = {
 	/* modifier                     key  			                function                argument */
@@ -156,6 +159,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                                      		        7)
 	TAGKEYS(                        XK_9,                                      		        8)
 	{ MODKEY|ShiftMask,             XK_q,    		                quit,                   {0}},
+    { ControlMask|Mod1Mask,         XK_Delete,                      spawn,                  {.v = suspend}},
 	{ MODKEY,			            XK_e,			                spawn,		            {.v = filebrws}},
 	{ 0, 				            XK_Print, 		                spawn,	   	            {.v = screenshot}},
 	{ ShiftMask, 			        XK_Print, 		                spawn,	   	            {.v = screenshotsel}},
@@ -194,6 +198,7 @@ static Key keys[] = {
 	{ MODKEY,			            XK_c,			                spawn,		            {.v = xcolor}},
 	{ MODKEY|ShiftMask,	            XK_m,			                spawn,		            {.v = mousepad}},
 	{ MODKEY,			            XK_v,			                spawn,		            {.v = vscode}},
+    { MODKEY,                       XK_Escape,                      spawn,                  {.v = processManager}},
 };
 
 /* button definitions */
